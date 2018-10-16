@@ -1,0 +1,59 @@
+.container form{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #fff200;
+    color:#23569c;
+    font-weight: 800; 
+    -webkit-box-shadow: -1px 9px 81px -9px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 9px 81px -9px rgba(0,0,0,0.75);
+    box-shadow: -1px 9px 81px -9px rgba(0,0,0,0.75);
+}
+.container form label {
+    margin-bottom: 2%;
+    width: 100%;
+   
+}
+.container form input {
+    height: 30px;
+    width: 100%;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+    border: none;
+    padding-left: 10px;
+}
+.container {
+    padding: 0 35%;
+}
+
+input[type="button"] {
+    background-color: #23569c;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+    background-image: url(http://www.aposta10.com/files/noticia/boleto.jpg);
+    background-size: 21% 100%;
+    background-repeat: none;
+    background-repeat: no-repeat;
+    background-position-x: 200px;
+    text-align: left;
+}
+input[type="button"]:hover {
+    
+    background-color: #23569c;
+    border: none;
+    cursor: pointer;
+    color: #fff200;
+}
+h1{
+    text-align: right;
+    font-size: 20px;
+}
+.body-form {
+
+    background: url(https://cdn6.aptoide.com/imgs/7/d/f/7df5a57c634b5d892827c0ca3e0ae1d9_icon.png?w=240);
+    background-repeat: no-repeat;
+    background-size: 23%;
+}

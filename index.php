@@ -12,22 +12,21 @@
 
     <form action=""></form>
 
-
-    
-    <style>
-        .container{
-            background-color: red;
-        }
-    </style>
 <div class="container">
+
     <form action="">
-        <label for="">Nome</label>
-        <input type="text">
-        <label for="">Nome</label>
-        <input type="text">
-        <label for="">Nome</label>
-        <input type="text">
+    <div class="body-form">
+    <h1>GERADOR DE BOLETO<br> BANCO DO BRASIL</h1>
+    </div>
+    
+        <label for=""> <input placeholder="NOME" type="text"></label>
+        <label for=""> <input placeholder="NOME" type="text"></label>
+        <label for=""> <input placeholder="NOME" type="text"></label>
+        <label for=""> <input placeholder="NOME" type="text"></label>
+        <label for=""> <input placeholder="NOME" type="text"></label>
+        <input type="button" value="GERAR BOLETO">
+    
     </form>
 </div>
 </body>
-</html>''
+</html>
