@@ -1,3 +1,9 @@
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color:#23569c;
+    font-weight: 700;
+    opacity: 0.9; /* Firefox */
+}
 .container form{
     display: flex;
     flex-direction: column;
@@ -5,9 +11,9 @@
     background-color: #fff200;
     color:#23569c;
     font-weight: 800; 
-    -webkit-box-shadow: -1px 9px 81px -9px rgba(0,0,0,0.75);
-    -moz-box-shadow: -1px 9px 81px -9px rgba(0,0,0,0.75);
-    box-shadow: -1px 9px 81px -9px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 }
 .container form label {
     margin-bottom: 2%;
@@ -24,7 +30,10 @@
     padding-left: 10px;
 }
 .container {
-    padding: 0 35%;
+    width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
 }
 
 input[type="button"] {
@@ -33,12 +42,20 @@ input[type="button"] {
     cursor: pointer;
     color: white;
     font-size: 20px;
-    background-image: url(http://www.aposta10.com/files/noticia/boleto.jpg);
-    background-size: 21% 100%;
+ 
     background-repeat: none;
     background-repeat: no-repeat;
     background-position-x: 200px;
     text-align: left;
+}
+.bol-generetor {
+    background-image: url(http://www.aposta10.com/files/noticia/boleto.jpg);
+    background-size: 21% 100%;
+}
+
+.token-generator {
+    background-image: url(https://vignette.wikia.nocookie.net/thelastofus/images/9/96/Lock.png/revision/latest?cb=20150811200030);
+    background-size: 10% 100%;
 }
 input[type="button"]:hover {
     
