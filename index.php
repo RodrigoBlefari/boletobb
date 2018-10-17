@@ -1,6 +1,31 @@
 <?php 
 use OpenBoleto\Banco\BancoDoBrasil;
 use OpenBoleto\Agente;
+
+$token    = "";
+$nome     = "";
+$cpf      = "";
+$endereco = "";
+$cep      = "";
+$estado   = "";
+$cidade   = "";
+$valor    = "";
+$boleto_display = "none";
+
+if(isset($_POST["boleto"])){
+
+    $token    = $_POST["token"];
+    $nome     = $_POST["nome"];
+    $cpf      = $_POST["cpf"];
+    $endereco = $_POST["endereco"];
+    $cep      = $_POST["cep"];
+    $estado   = $_POST["estado"];
+    $cidade   = $_POST["cidade"];
+    $valor    = number_format($_POST["valor"],2);
+    $boleto_display = "block";
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -22,39 +47,41 @@ use OpenBoleto\Agente;
     </div>
     <h2>GERAR TOKEN</h2>
         <label for="">TOKEN</label>  <input placeholder="" type="text">  
-        <input class="token-generator" type="button" value="GERAR TOKEN">
+        <input class="token-generator" type="submit" value="GERAR TOKEN">
     </form>
 </div>
 
 <div class="container">
-    <form action="">
+    <form method="POST" action="">
   
-    <h2>GERADOR DE BOLETO </h2>
-        <label for="">TOKEN </label><input placeholder="" type="text" value="">
-        <label for="">NOME</label><input placeholder="" type="text" value="Rodrigo Blefari Gonçalves">
-        <label for="">CPF</label><input placeholder="" type="text" value="400-936-858-66">
-        <label for="">ENDEREÇO</label><input placeholder="" type="text" value="Av dom jaime de barros camara">
-        <label for="">CEP</label><input placeholder="" type="text" value="09895-400">
-        <label for="">ESTADO</label><input placeholder="" type="text" value="SÃO PAULO">
-        <label for="">CIDADE</label><input placeholder="" type="text" value="São Bernardo do Campo">
-        <label for="">VALOR</label><input placeholder="" type="text" value="150">
-        <input class="bol-generator" type="button" value="GERAR BOLETO">
+    <h2>GERADOR DE BOLETO</h2>
+        <label for="">TOKEN</label><input   type="text" name="token"     value="">
+        <label for="">NOME</label><input     type="text" name="nome"     value="Rodrigo Blefari Gonçalves">
+        <label for="">CPF</label><input      type="text" name="cpf"      value="400-936-858-66">
+        <label for="">ENDEREÇO</label><input type="text" name="endereco" value="Av dom jaime de barros camara">
+        <label for="">CEP</label><input      type="text" name="cep"      value="09895-400">
+        <label for="">ESTADO</label><input   type="text" name="estado"   value="SÃO PAULO">
+        <label for="">CIDADE</label><input   type="text" name="cidade"   value="São Bernardo do Campo">
+        <label for="">VALOR R$</label><input type="text" name="valor"    value="150">
+        <input class="bol-generator" type="submit" name="boleto" value="GERAR BOLETO">
     </form>
 </div>
 
-<div class="boleto-modal">
+<div class="boleto-modal" style="display:<?= $boleto_display ?>">
     <div class="modal-content">
-    <input class="modal-close" type="button" value="FECHAR">
+    <input class="modal-close" type="submit" value="FECHAR">
     <?php
     include 'vendor/kriansa/openboleto/autoloader.php';
     
-$sacado = new Agente('Fernando Maia', '023.434.234-34', 'ABC 302 Bloco N', '72000-000', 'Brasília', 'DF');
+$sacado = new Agente($nome,  $cpf, $endereco, $cep, $estado, $cidade);
 $cedente = new Agente('FTD com você', '02.123.123/0001-11', 'CLS 403 Lj 23', '71000-000', 'Brasília', 'DF');
-
+$date = new DateTime();
+$date->add(new DateInterval('P3D'));
 $boleto = new BancoDoBrasil(array(
     // Parâmetros obrigatórios
-    'dataVencimento' => new DateTime('2013-01-24'),
-    'valor' => 23.00,
+ 
+    'dataVencimento' => $date,
+    'valor' => $valor,
     'sequencial' => 1234567,
     'sacado' => $sacado,
     'cedente' => $cedente,
