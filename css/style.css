@@ -48,7 +48,7 @@ body{
     background-size: 21% 100%;
 }
 
-input[type="button"] {
+input[type="submit"] {
     background-color: #23569c;
     border: none;
     cursor: pointer;
@@ -65,7 +65,7 @@ input[type="button"] {
     background-image: url(https://vignette.wikia.nocookie.net/thelastofus/images/9/96/Lock.png/revision/latest?cb=20150811200030);
     background-size: 10% 100%;
 }
-input[type="button"]:hover {
+input[type="submit"]:hover {
     
     background-color: #23569c;
     border: none;
@@ -84,7 +84,7 @@ h1{
 }
 
 .boleto-modal{
-    display: none; /* Hidden by default */
+    /*display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     padding-top: 20px; /* Location of the box */
