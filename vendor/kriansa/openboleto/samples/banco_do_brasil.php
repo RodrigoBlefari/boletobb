@@ -1,55 +1,13 @@
-<?php 
+<?php
+
+
+
 use OpenBoleto\Banco\BancoDoBrasil;
 use OpenBoleto\Agente;
-?>
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    
-    <link rel="stylesheet" href="css/style.css">
-    <title>Boleto Banco do Brasill</title>
-</head>
-<body>
-
-<div class="container">
-    <form action="">
-    <div class="body-form">
-    <h1>GERADOR DE BOLETO<br> BANCO DO BRASIL</h1>
-    </div>
-    <h2>GERAR TOKEN</h2>
-        <label for="">TOKEN</label>  <input placeholder="" type="text">  
-        <input class="token-generator" type="button" value="GERAR TOKEN">
-    </form>
-</div>
-
-<div class="container">
-    <form action="">
-  
-    <h2>GERADOR DE BOLETO </h2>
-        <label for="">TOKEN </label><input placeholder="" type="text" value="">
-        <label for="">NOME</label><input placeholder="" type="text" value="Rodrigo Blefari Gonçalves">
-        <label for="">CPF</label><input placeholder="" type="text" value="400-936-858-66">
-        <label for="">ENDEREÇO</label><input placeholder="" type="text" value="Av dom jaime de barros camara">
-        <label for="">CEP</label><input placeholder="" type="text" value="09895-400">
-        <label for="">ESTADO</label><input placeholder="" type="text" value="SÃO PAULO">
-        <label for="">CIDADE</label><input placeholder="" type="text" value="São Bernardo do Campo">
-        <label for="">VALOR</label><input placeholder="" type="text" value="150">
-        <input class="bol-generator" type="button" value="GERAR BOLETO">
-    </form>
-</div>
-
-<div class="boleto-modal">
-    <div class="modal-content">
-    <input class="modal-close" type="button" value="FECHAR">
-    <?php
-    include 'vendor/kriansa/openboleto/autoloader.php';
-    
+//include "../src/OpenBoleto/BancoDoBrasil.php";
+//include "../src/Agente.php";
 $sacado = new Agente('Fernando Maia', '023.434.234-34', 'ABC 302 Bloco N', '72000-000', 'Brasília', 'DF');
-$cedente = new Agente('FTD com você', '02.123.123/0001-11', 'CLS 403 Lj 23', '71000-000', 'Brasília', 'DF');
+$cedente = new Agente('Empresa de cosméticos LTDA', '02.123.123/0001-11', 'CLS 403 Lj 23', '71000-000', 'Brasília', 'DF');
 
 $boleto = new BancoDoBrasil(array(
     // Parâmetros obrigatórios
@@ -105,11 +63,3 @@ $boleto = new BancoDoBrasil(array(
 ));
 
 echo $boleto->getOutput();
-
-
-    ?>
-</div>
-</div>
-</body>
-<script src="js/script.js"></script>
-</html>
