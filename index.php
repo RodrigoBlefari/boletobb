@@ -12,6 +12,47 @@ $cidade   = "";
 $valor    = "";
 $boleto_display = "none";
 
+if(isset($_POST["token"])){
+
+    
+
+$curl = curl_init();
+
+curl_setopt_array($curl, array(
+  CURLOPT_URL => "https://oauth.hm.bb.com.br/oauth/token",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => "",
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "POST",
+  CURLOPT_POSTFIELDS => "grant_type=client_credentials&scope=cobranca.registro-boletos",
+  CURLOPT_HTTPHEADER => array(
+    "authorization: Basic ZXlKcFpDSTZJamd3TkROaU5UTXRaalE1TWkwMFl5SXNJbU52WkdsbmIxQjFZbXhwWTJGa2IzSWlPakV3T1N3aVkyOWthV2R2VTI5bWRIZGhjbVVpT2pFc0luTmxjWFZsYm1OcFlXeEpibk4wWVd4aFkyRnZJam94ZlE6ZXlKcFpDSTZJakJqWkRGbE1HUXROMlV5TkMwME1HUXlMV0kwWVNJc0ltTnZaR2xuYjFCMVlteHBZMkZrYjNJaU9qRXdPU3dpWTI5a2FXZHZVMjltZEhkaGNtVWlPakVzSW5ObGNYVmxibU5wWVd4SmJuTjBZV3hoWTJGdklqb3hMQ0p6WlhGMVpXNWphV0ZzUTNKbFpHVnVZMmxoYkNJNk1YMA==",
+    "cache-control: no-cache",
+    "content-type: application/x-www-form-urlencoded",
+    "postman-token: 0eb1c6c3-610c-b969-dd8b-98e4da61c3dc"
+  ),
+));
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
+
+if ($err) {
+  echo "cURL Error #:" . $err;
+} else {
+
+    echo "<pre>";
+    $token = json_decode($response)->access_token;
+    //var_dump($response);
+    //echo $token;
+    echo "</pre>";
+}
+
+}
+
 if(isset($_POST["boleto"])){
 
     $token    = $_POST["token"];
@@ -41,13 +82,13 @@ if(isset($_POST["boleto"])){
 <body>
 
 <div class="container">
-    <form action="">
+    <form action="" method="post">
     <div class="body-form">
     <h1>GERADOR DE BOLETO<br> BANCO DO BRASIL</h1>
     </div>
     <h2>GERAR TOKEN</h2>
-        <label for="">TOKEN</label>  <input placeholder="" type="text">  
-        <input class="token-generator" type="submit" value="GERAR TOKEN">
+        <label for="">TOKEN</label>  <input placeholder="" type="text" value=<?= $token ?>>  
+        <input class="token-generator" name="token" type="submit" value="GERAR TOKEN">
     </form>
 </div>
 
@@ -55,9 +96,9 @@ if(isset($_POST["boleto"])){
     <form method="POST" action="">
   
     <h2>GERADOR DE BOLETO</h2>
-        <label for="">TOKEN</label><input   type="text" name="token"     value="">
+        <label for="">TOKEN</label><input   type="text" name="token"     value=<?= $token ?>>
         <label for="">NOME</label><input     type="text" name="nome"     value="Rodrigo Blefari Gonçalves">
-        <label for="">CPF</label><input      type="text" name="cpf"      value="400-936-858-66">
+        <label for="">CPF</label><input      type="text" name="cpf"      value="400-936-858-66git branch">
         <label for="">ENDEREÇO</label><input type="text" name="endereco" value="Av dom jaime de barros camara">
         <label for="">CEP</label><input      type="text" name="cep"      value="09895-400">
         <label for="">ESTADO</label><input   type="text" name="estado"   value="SÃO PAULO">
