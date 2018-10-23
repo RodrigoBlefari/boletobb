@@ -5,6 +5,11 @@
     opacity: 0.9; /* Firefox */
 }
 body{
+
+    display: flex;
+    flex-direction: column;
+}
+.forms{
     display: flex;
 }
 .container form{
