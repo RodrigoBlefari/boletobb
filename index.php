@@ -38,7 +38,7 @@ if(isset($_POST["boleto"])){
         <h2>GERADOR DE BOLETO</h2>
             <label for="">TOKEN</label><input    type="text"   name="token"    value=<?= $token ?>>
             <label for="">NOME</label><input     type="text"   name="nome"     value="Rodrigo Blefari Gonçalves">
-            <label for="">CPF</label><input      type="text"   name="cpf"      value="40093685866">
+            <label for="">CPF</label><input      type="text"   name="cpf"      value="90299295290">
             <label for="">ENDEREÇO</label><input type="text"   name="endereco" value="Av dom jaime de barros camara">
             <label for="">BAIRRO</label><input   type="text"   name="bairro"   value="Planalto">
             <label for="">CEP</label><input      type="text"   name="cep"      value="09895400">
@@ -71,6 +71,16 @@ if(isset($_POST["boleto"])){
             'carteira' => $numeroCarteira,
             'conta' => 100130, // Até 8 dígitos
             'convenio' => $numeroConvenio, // 4, 6 ou 7 dígitos
+            
+            'dataVencimento' => $date,
+            'valor' => $valorOriginalTitulo,
+            'sequencial' => 1234567,
+            'sacado' => $sacado,
+            'cedente' => $cedente,
+            'agencia' => 1911, // Até 4 dígitos
+            'carteira' => $numeroCarteira,
+            'conta' => 100130, // Até 8 dígitos
+            'convenio' => $numeroConvenio, // 4, 6 ou 7 dígitos
 
             // Caso queira um número sequencial de 17 dígitos, a cobrança deverá:
             // - Ser sem registro (Carteiras 16 ou 17)
@@ -91,8 +101,8 @@ if(isset($_POST["boleto"])){
 
             // Parâmetros opcionais
             //'resourcePath' => '../resources',
-            //'moeda' => BancoDoBrasil::MOEDA_REAL,
-            //'dataDocumento' => new DateTime(),
+            'moeda' => BancoDoBrasil::MOEDA_REAL,
+            'dataDocumento' => new DateTime(),
             //'dataProcessamento' => new DateTime(),
             //'contraApresentacao' => true,
             //'pagamentoMinimo' => 23.00,
