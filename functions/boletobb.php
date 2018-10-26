@@ -1,5 +1,4 @@
 <?php
-
     /*    
     Seguem os dados do convênio de cobrança gerado para a Cobrança WebService:
 
@@ -24,7 +23,6 @@
     Formato Conv  :          4 CNAB 400 - BB                            
     Tipo Ret.Lider:          5 CBR641/643 - Gerenciador Financeiro  
     */
-
     //DADOS DO CLIENTE QUE VAI PAGAR (EMISSOR)
 
 $curl = curl_init();
@@ -53,7 +51,6 @@ if ($err) {
     echo "cURL Error #:" . $err;
 } else {
     $token = json_decode($response)->access_token;
-        
     $nomePagador                          = $_POST["nome"];
     $cpf                                  = $_POST["cpf"];
     $textoEnderecoPagador                 = $_POST["endereco"];
@@ -61,7 +58,7 @@ if ($err) {
     $numeroCepPagador                     = $_POST["cep"];
     $siglaUfPagador                       = $_POST["estado"];
     $nomeMunicipioPagador                 = $_POST["cidade"];
-    $valorOriginalTitulo                  = number_format($_POST["valor"],2);
+    $valorOriginalTitulo                  = $_POST["valor"];
     $textoNumeroTelefonePagador           = ""; //Opcional;
 
     //DADOS DA CONTA BANCO DO BRASIL
@@ -72,21 +69,20 @@ if ($err) {
     $numeroCarteira                       = 17;
     $numeroVariacaoCarteira               = 19; //convênio esta como 04 - 3;
     $codigoModalidadeTitulo               = 1;
-    $dataEmissaoTitulo                    = date('d.m.Y');
+    $dataEmissaoTitulo                    = date('d.m.Y', strtotime(date('d.m.Y'). ' - 1 days'));
     $dataVencimentoTitulo                 = date('d.m.Y', strtotime($dataEmissaoTitulo. ' + 3 days'));
     $codigoTipoDesconto                   = 0;
-    $quantidadeDiaProtesto                = 0;
+    $quantidadeDiaProtesto                = "";
     $codigoTipoJuroMora                   = 0;
     $codigoTipoMulta                      = 0;
-
 
     $codigoAceiteTitulo                   = "N";
     $codigoTipoTitulo                     = 2;
     $indicadorPermissaoRecebimentoParcial = "N";
-    $textoNumeroTituloBeneficiario        = ""; /*código para identificação do Título de Cobrança, gerado pelo banco responsável pela cobrança ou 
+    $textoNumeroTituloBeneficiario        = "987654321987654"; /*código para identificação do Título de Cobrança, gerado pelo banco responsável pela cobrança ou 
     pelo beneficiário, dependendo do tipo de convênio*/
     $codigoTipoContaCaucao                = 1; //não obrigatório;
-    $textoNumeroTituloCliente             = "00010140511111111111"; /* define o número adotado e controlado pelo Cliente, para identificar o Título de Cobrança,  Apesar de ser tipo string, só serão aceitos caracteres numéricos neste campo. Os três (3) primeiros 
+    $textoNumeroTituloCliente             = "000". $numeroConvenio . "0001234567"; /* define o número adotado e controlado pelo Cliente, para identificar o Título de Cobrança,  Apesar de ser tipo string, só serão aceitos caracteres numéricos neste campo. Os três (3) primeiros 
     bytes devem ser zeros, os sete (7) seguintes serão o número do convênio e os dez (10) finais o número  *///Nós criamos, confirmar com banco.
     $textoMensagemBloquetoOcorrencia      = "Pagamento disponível até a data de vencimento";
     $codigoTipoInscricaoPagador           = 1; //1 para CPf e 2 para CNPJ
@@ -235,7 +231,7 @@ $dev = '
         $movies = new SimpleXMLElement($myXMLData);
         $json  = json_encode($movies);
         $configData = json_decode($json, true);
-        
+        $configData = $configData['SOAP-ENVBody']['ns0resposta'];
         //mostra boleto
         $boleto_display                       = "block";
     }
