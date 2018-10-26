@@ -5,6 +5,11 @@
     opacity: 0.9; /* Firefox */
 }
 body{
+
+    display: flex;
+    flex-direction: column;
+}
+.forms{
     display: flex;
 }
 .container form{
@@ -35,10 +40,10 @@ body{
     padding-left: 10px;
     margin-bottom: 15px;
     width: 100%;
-    padding-left: 35%;  
+    padding-left: 20%;  
 }
 .container {
-    width: 360px;
+    width: 560px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 20px;
