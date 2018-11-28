@@ -1,30 +1,4 @@
 <?php
-    /*    
-    Seguem os dados do convênio de cobrança gerado para a Cobrança WebService:
-
-    ---------------------------- Consultar - Servico --------------------
-    Cliente : 200798496 - EDITORA FTD S/A                                
-    Agencia : 1911 - 9 CORP BANK INFRA           Conta   :    100130 - 2 
-    Carteira: 17 SIMPLES COM REGISTRO            Variacao: 04 - 3        
-    Convenio: 3135329     Contrato: 19920359                             
-    Nr Unico OPR     : 20182913553611796  EVT/OPR   : 74334017043        
-    Situacao: 1 Ativo                     Finalidade: 00 Cobr. de Titulo 
-    Ag./Conta - Credito: 1911 - 9     100130 - 2 EDITORA FTD S/A         
-    Ag./Conta - Debito : 1911 - 9     100130 - 2 EDITORA FTD S/A         
-                                                                        
-                                                                        
-    ------------------------ Detalhamento do Convenio ------------------
-    Agencia       :       1911 9 - CORP BANK INFRA                      
-    Beneficiario  :     100130 2 - EDITORA FTD S/A                      
-    Cart/Variacao :     17/043 SIMPLES COM REGISTRO                     
-    Tipo Convenio :          4 Cliente: Numera, emite e expede          
-    Situacao      :          1 Normal com retorno                       
-    Nr.Convenio   :    3135329               Nr.Conv.Lider   : 3135329  
-    Formato Conv  :          4 CNAB 400 - BB                            
-    Tipo Ret.Lider:          5 CBR641/643 - Gerenciador Financeiro  
-    */
-    //DADOS DO CLIENTE QUE VAI PAGAR (EMISSOR)
-
 $curl = curl_init();
 curl_setopt_array($curl, array(
   CURLOPT_URL => "https://oauth.hm.bb.com.br/oauth/token",
